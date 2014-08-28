@@ -16,15 +16,6 @@ GPIO.setup(LEDGrn,GPIO.OUT)
 GPIO.output(LEDGrn,GPIO.LOW);
 GPIO.output(LEDRed,GPIO.LOW);
 
-while True:
-   if (GPIO.input(IRPin)):
-      data=scan()
-      # Here goes something to add for Front-end
-   else:
-      blinkRED() # When nothing is there blink red LED with some predefined period
-
-
-
 def capture():
    os.system("sudo fswebcam --device /dev/video0 --input 0 --resolution 352x288 --save "+strpath+strfile+".jpg --skip 2")
 def scan():
@@ -47,3 +38,13 @@ def run_cmd(cmd):
    p = Popen(cmd, shell=True, stdout=PIPE)
    output = p.communicate()[0]
    return output
+
+while True:
+   if (GPIO.input(IRPin)):
+      data=scan()
+      # Here goes something to add for Front-end
+   else:
+      blinkRED() # When nothing is there blink red LED with some predefined period
+
+
+
