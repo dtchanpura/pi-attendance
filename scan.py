@@ -20,7 +20,7 @@ def capture():
    os.system("sudo fswebcam --device /dev/video0 --input 0 --resolution 352x288 --save "+strpath+strfile+".jpg --skip 2")
 def scan():
    scanned=''
-   while scanned=='':
+   while scanned=='' and GPIO.input(IRPin):
       capture()
       scanned=run_cmd("zbarimg "+strpath+strfile+".jpg")
       GPIO.output(LEDRed,GPIO.HIGH);
