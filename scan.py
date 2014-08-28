@@ -26,6 +26,7 @@ def scan():
       scanned=run_cmd("zbarimg "+strpath+strfile+".jpg")
       GPIO.output(LEDRed,GPIO.HIGH);
 
+   global flagProx
    flagProx=False
    GPIO.output(LEDGrn,GPIO.HIGH);
    GPIO.output(LEDRed,GPIO.LOW);
@@ -37,7 +38,7 @@ def blinkRED():
    GPIO.output(LEDRed, GPIO.HIGH)
    sleep(0.2)
    GPIO.output(LEDRed, GPIO.LOW)
-   sleep(2)
+   sleep(1)
 
 def run_cmd(cmd):
    p = Popen(cmd, shell=True, stdout=PIPE)
@@ -46,6 +47,7 @@ def run_cmd(cmd):
 
 while True:
    if (GPIO.input(IRPin)):
+      global flagProx
       flagProx=True
       data=scan()
       # Here goes something to add for Front-end
