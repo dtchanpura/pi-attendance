@@ -35,10 +35,9 @@ def scan():
    flagProx=False
    if scanned!='':
        GPIO.output(LEDGrn, GPIO.HIGH);
-   
-   GPIO.output(LEDRed, GPIO.LOW);
-   sleep(8)
-   return scanned
+       GPIO.output(LEDRed, GPIO.LOW);
+       sleep(8)
+       return scanned
 
 def blinkRED():
    GPIO.output(LEDGrn, GPIO.LOW)
