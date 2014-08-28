@@ -26,12 +26,15 @@ def scan():
       GPIO.output(LEDRed,GPIO.HIGH);
 
    GPIO.output(LEDGrn,GPIO.HIGH);
+   GPIO.output(LEDRed,GPIO.LOW);
+   sleep(8)
    return scanned
 
 def blinkRED():
+   GPIO.output(LEDGrn, GPIO.LOW)
    GPIO.output(LEDRed, GPIO.HIGH)
    sleep(0.2)
-   GPIO.output(LEDRed, GPIO.HIGH)
+   GPIO.output(LEDRed, GPIO.LOW)
    sleep(2)
 
 def run_cmd(cmd):
