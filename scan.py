@@ -21,12 +21,16 @@ def capture():
    os.system("sudo fswebcam --device /dev/video0 --input 0 --resolution 352x288 --save "+strpath+strfile+".jpg --skip 2")
 def scan():
    scanned=''
+   count=0
+   global flagProx
    while scanned=='' and flagProx:
+      count = count + 1
       capture()
       scanned=run_cmd("zbarimg "+strpath+strfile+".jpg")
       GPIO.output(LEDRed,GPIO.HIGH);
+      if count == 10:
+         flagProx=False
 
-   global flagProx
    flagProx=False
    GPIO.output(LEDGrn,GPIO.HIGH);
    GPIO.output(LEDRed,GPIO.LOW);
