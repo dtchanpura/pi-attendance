@@ -8,6 +8,7 @@ strfile = "webcam"
 IRPin=17
 LEDRed=22
 LEDGrn=23
+flagProx=False
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(IRPin,GPIO.IN)
@@ -25,6 +26,7 @@ def scan():
       scanned=run_cmd("zbarimg "+strpath+strfile+".jpg")
       GPIO.output(LEDRed,GPIO.HIGH);
 
+   flagProx=False
    GPIO.output(LEDGrn,GPIO.HIGH);
    GPIO.output(LEDRed,GPIO.LOW);
    sleep(8)
@@ -45,9 +47,7 @@ def run_cmd(cmd):
 while True:
    if (GPIO.input(IRPin)):
       data=scan()
+      flagProx=True
       # Here goes something to add for Front-end
    else:
       blinkRED() # When nothing is there blink red LED with some predefined period
-
-
-
