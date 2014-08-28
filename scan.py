@@ -1,6 +1,8 @@
 from time import sleep
 import os
 import RPi.GPIO as GPIO
+from subprocess import *
+
 strpath = "/home/darshil/"
 strfile = "webcam"
 IRPin=17
@@ -23,17 +25,13 @@ while True:
 
 
 
-
-
-
-
 def capture():
    os.system("sudo fswebcam --device /dev/video0 --input 0 --resolution 352x288 --save "strpath+strfile".jpg --skip 2")
 def scan():
-   scanned=1024
-   while scanned==1024:
+   scanned=''
+   while scanned=='':
       capture()
-      scanned=os.system("zbarimg -q "+strpath+strfile+".jpg")
+      scanned=run_cmd("zbarimg "+strpath+strfile+".jpg")
       GPIO.output(LEDRed,GPIO.HIGH);
 
    GPIO.output(LEDGrn,GPIO.HIGH);
@@ -44,3 +42,11 @@ def blinkRED():
    sleep(0.2)
    GPIO.output(LEDRed, GPIO.HIGH)
    sleep(2)
+
+def run_cmd(cmd):
+   p = Popen(cmd, shell=True, stdout=PIPE)
+   output = p.communicate()[0]
+   return output
+
+
+        

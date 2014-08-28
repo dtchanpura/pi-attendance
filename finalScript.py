@@ -6,4 +6,3 @@ os.system("sudo fswebcam --device /dev/video0 --input 0 --resolution 352x288 --s
 print "Reading data from qrcode"
 # call os command to read qr data to text file
 print os.system("zbarimg -q "+strpath+strfile+".jpg")
-
