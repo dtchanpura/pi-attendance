@@ -8,6 +8,7 @@ strfile = "webcam"
 IRPin=17
 LEDRed=22
 LEDGrn=23
+global flagProx
 flagProx=False
 
 GPIO.setmode(GPIO.BCM)
@@ -32,7 +33,9 @@ def scan():
          flagProx=False
 
    flagProx=False
-   GPIO.output(LEDGrn,GPIO.HIGH);
+   if scanned!='':
+       GPIO.output(LEDGrn,GPIO.HIGH);
+   
    GPIO.output(LEDRed,GPIO.LOW);
    sleep(8)
    return scanned
@@ -42,7 +45,7 @@ def blinkRED():
    GPIO.output(LEDRed, GPIO.HIGH)
    sleep(0.2)
    GPIO.output(LEDRed, GPIO.LOW)
-   sleep(1)
+   sleep(0.8)
 
 def run_cmd(cmd):
    p = Popen(cmd, shell=True, stdout=PIPE)
