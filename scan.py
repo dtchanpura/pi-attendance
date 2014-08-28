@@ -46,8 +46,8 @@ def run_cmd(cmd):
 
 while True:
    if (GPIO.input(IRPin)):
-      data=scan()
       flagProx=True
+      data=scan()
       # Here goes something to add for Front-end
    else:
       blinkRED() # When nothing is there blink red LED with some predefined period
