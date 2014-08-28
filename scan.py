@@ -26,7 +26,7 @@ while True:
 
 
 def capture():
-   os.system("sudo fswebcam --device /dev/video0 --input 0 --resolution 352x288 --save "strpath+strfile".jpg --skip 2")
+   os.system("sudo fswebcam --device /dev/video0 --input 0 --resolution 352x288 --save "+strpath+strfile+".jpg --skip 2")
 def scan():
    scanned=''
    while scanned=='':
@@ -47,6 +47,3 @@ def run_cmd(cmd):
    p = Popen(cmd, shell=True, stdout=PIPE)
    output = p.communicate()[0]
    return output
-
-
-        
