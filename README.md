@@ -17,9 +17,10 @@ Green for feedback as the QR code has been scanned
 
 This folder is the root for flask web app.
 
+```
 APP ROOT flask-app/
 │   ├── forms.py		Forms
-│   ├── \__init__.py		
+│   ├── __init__.py		
 │   ├── models.py		DB
 │   ├── static
 │   │   └── css			Skeleton Framwork CSS
@@ -36,4 +37,4 @@ APP ROOT flask-app/
 ├── config.py			Config Variables like path and mail credentials
 ├── db_create.py
 └── run.py			Final Script for running app.
-
+```
